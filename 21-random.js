@@ -7,7 +7,10 @@ var player = ''; // person whos turn it is
 do{//end at 21
    //call continuing function for user
 	player = "you";
-	steps = prompt("startig at "+count+", how many steps do you count (1-3)");
+	/*Restrict user input*/
+	steps = prompt("starting at "+count+", how many steps do you count (1-3)");
+	steps = cleanInput(steps);
+	
 	count = counting(player,count,steps)
 	//call counting function for computer, at 2 steps each time
 	player = "me";
@@ -27,4 +30,12 @@ function counting(player, current, steps){
 	alert(player+": "+game);
 	current= parseInt(current)+ parseInt(steps);
 	return current;
+}
+
+function cleanInput(userVar){
+	do{
+		userVar = prompt("Try again, Dingus. Please enter a number between 1 and 3");
+	}
+	while(userVar > 3 || userVar < 1)
+	return userVar;
 }
